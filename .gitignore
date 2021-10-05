@@ -4,3 +4,5 @@
 *.eclipse
 .settings/
 *.classpath
+/target/
+*persistence.xml
