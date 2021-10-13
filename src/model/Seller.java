@@ -5,10 +5,15 @@
  */
 package model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,14 +25,14 @@ public class Seller {
 	@Column(name="SELLERID")
 	private int sellerId;
 	
-	@Column(name="HOUSEID")
-	private int houseId;
-	
 	@Column(name="FIRSTNAME")
 	private String firstName;
 	
 	@Column(name="LASTNAME")
 	private String lastName;
+	
+	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
+	private List<House> listOfHouses;
 
 	/**
 	 * @return the sellerId
@@ -43,19 +48,6 @@ public class Seller {
 		this.sellerId = sellerId;
 	}
 
-	/**
-	 * @return the houseId
-	 */
-	public int getHouseId() {
-		return houseId;
-	}
-
-	/**
-	 * @param houseId the houseId to set
-	 */
-	public void setHouseId(int houseId) {
-		this.houseId = houseId;
-	}
 
 	/**
 	 * @return the firstName
@@ -85,12 +77,18 @@ public class Seller {
 		this.lastName = lastName;
 	}
 
+	public List<House> getListOfHouses() {
+		return listOfHouses;
+	}
+
+	public void setListOfHouses(List<House> listOfHouses) {
+		this.listOfHouses = listOfHouses;
+	}
+
 	@Override
 	public String toString() {
-		return "Seller [sellerId=" + sellerId + ", houseId=" + houseId + ", firstName=" + firstName + ", lastName="
-				+ lastName + "]";
+		return "Seller [sellerId=" + sellerId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", listOfHouses=" + listOfHouses + "]";
 	}
-	
-	
 	
 }
