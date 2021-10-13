@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +33,37 @@ public class House {
 	private int sellingPrice;
 	
 	@Column(name="MARKETDATE")
-	private Date marketDate;
+	private LocalDate marketDate;
+	
+	// constructors
+	public House() {
+		super();
+	}
+	
+	public House(String address, int zipcode) {
+		super();
+		this.address = address;
+		this.zipcode = zipcode;
+	}
+
+	public House(String address, int zipcode, int sellingPrice, LocalDate marketDate) {
+		super();
+		this.address = address;
+		this.zipcode = zipcode;
+		this.sellingPrice = sellingPrice;
+		this.marketDate = marketDate;
+	}
+
+	public House(int houseId, String address, int zipcode, int sellingPrice, LocalDate marketDate) {
+		super();
+		this.houseId = houseId;
+		this.address = address;
+		this.zipcode = zipcode;
+		this.sellingPrice = sellingPrice;
+		this.marketDate = marketDate;
+	}
+
+
 
 	/**
 	 * @return the houseId
@@ -94,14 +124,14 @@ public class House {
 	/**
 	 * @return the marketDate
 	 */
-	public Date getMarketDate() {
+	public LocalDate getMarketDate() {
 		return marketDate;
 	}
 
 	/**
 	 * @param marketDate the marketDate to set
 	 */
-	public void setMarketDate(Date marketDate) {
+	public void setMarketDate(LocalDate marketDate) {
 		this.marketDate = marketDate;
 	}
 
