@@ -27,7 +27,15 @@ public class ViewAllHousesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HouseHelper doa = new HouseHelper();
+		 request.setAttribute("allHouses", doa.showAllHouses());
+		 String path = "/house-list.jsp";
+		 
+		 if(doa.showAllHouses().isEmpty()) {
+			 path = "/index.html";
+		 }
+		 
+		 getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 	/**
