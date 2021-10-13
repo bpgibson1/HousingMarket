@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add House</title>
+</head>
+<body>
+	<form action="addHouseServlet" method="post">
+	Address: <input type="text" name="address" >
+	Zipcode: <input type="text" name="zipcode">
+	Selling Price: $<input type="text" name="sellingPrice">
+	Market Date: <input type="text" name="marketDate" placeholder="YYYY-MM-DD">
+	<input type="submit" value="Add Item">
+	</form> <br/>
+	<a href="viewAllHousesServlet">View the complete list of Houses</a><br />
+	<a href="viewAllSellersServlet">View all Sellers</a><br />
+	<a href="addHouseToSeller">Create a new Seller</a>
+</body>
+</html>
