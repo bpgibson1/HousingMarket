@@ -51,7 +51,7 @@ public class HouseHelper {
 	
 	public List<House> showAllHouses() {
 		EntityManager em = emfactory.createEntityManager();
-		List<House> allHouses = em.createQuery("SELECT i FROM House").getResultList();
+		List<House> allHouses = em.createQuery("SELECT i FROM House i").getResultList();
 		return allHouses;
 	}
 

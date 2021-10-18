@@ -10,58 +10,52 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 
 import model.Seller;
 
 public class SellerHelper {
-static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ResipesDatabaseProject");
-	
-	public void insertNewSeller(Seller s) {
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("HousingMarket");
+
+	public void insertSeller(Seller seller) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		em.persist(s);
+		em.persist(seller);
 		em.getTransaction().commit();
 		em.close();
 	}
-	
-	public List<Seller> getSellers(){
-		EntityManager em = emfactory.createEntityManager();
-		List<Seller> allSellers = em.createQuery("SELECT d FROM SELLER d").getResultList();
-		return allSellers;
-	}
-	
-	public Seller searchForSellerById(Integer tempId) {
+
+	public void removeSeller(Seller seller) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		Seller found = em.find(Seller.class, tempId);
+		Seller toRemove = em.merge(seller);
+		em.remove(toRemove);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public void updateSeller(Seller toEdit) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public Seller searchForSellerById(int idToEdit) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Seller found = em.find(Seller.class, idToEdit);
 		em.close();
 		return found;
 	}
 
-	
-	public void deleteSeller(Seller sToDelete) {
+	public List<Seller> showAllSellers() {
 		EntityManager em = emfactory.createEntityManager();
-		em.getTransaction().begin();
-		TypedQuery<Seller> typedQuery = em.createQuery("SELECT d FROM SELLER d WHERE d.SellerId= :selectedId", Seller.class);
-		typedQuery.setParameter("selectedId", sToDelete.getSellerId());
-		
-		typedQuery.setMaxResults(1);
-		
-		Seller result = typedQuery.getSingleResult();
-		
-		em.remove(result);
-		em.getTransaction().commit();
-		em.close();
+		List<Seller> allItems = em.createQuery("SELECT i FROM Seller i").getResultList();
+		return allItems;
 	}
-	
-	public void updateSeller(Seller sToEdit) {
-		EntityManager em = emfactory.createEntityManager();
-		em.getTransaction().begin();
-		em.merge(sToEdit);
-		em.getTransaction().commit();
-		em.close();
+
+	public void cleanUp() {
+		emfactory.close();
 	}
-	
-	
 }
