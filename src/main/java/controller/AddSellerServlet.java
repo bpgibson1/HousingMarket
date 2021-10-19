@@ -33,6 +33,7 @@ public class AddSellerServlet extends HttpServlet {
 		}
     	
     	getServletContext().getRequestDispatcher(path).forward(request, response);
+
     }
 
 	/**
