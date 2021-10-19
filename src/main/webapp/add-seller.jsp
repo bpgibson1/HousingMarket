@@ -9,7 +9,7 @@
 </head>
 <body>
 	
-<form action="createNewSeller" method="post">
+<form action="addSellerServlet" method="post">
 
 	<label for="sellerFirstName">Enter seller first name:</label>
 	<input type="text" id="sellerFirstName" name="sellerFirstName" placeholder="Jane" size="10">
