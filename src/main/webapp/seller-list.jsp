@@ -12,8 +12,7 @@
 		<table>
 			<c:forEach items="${requestScope.allSellers}" var="currentseller">
 				<tr>
-					<td><input type="radio" name="id"
-						value="${currentseller.sellerId}"></td>
+					<td><input type="radio" name="id" value="${currentseller.sellerId}"></td>
 					<td>${currentseller.firstName}</td>
 					<td>${currentseller.lastName}</td>
 					<c:forEach items="${requestScope.currentseller.listOfHouses}" var="currenthouse">
@@ -29,5 +28,7 @@
 		<input type="submit" value="delete" name="doThisToItem"> 
 		<input type="submit" value="add" name="doThisToItem">
 	</form>
+	<a href="addSellerServlet">Create new Seller</a><br />
+	<a href="index.html">Insert a new Recipe</a>
 </body>
 </html>
