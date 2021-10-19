@@ -15,7 +15,7 @@
 					<td><input type="radio" name="id" value="${currentseller.sellerId}"></td>
 					<td>${currentseller.firstName}</td>
 					<td>${currentseller.lastName}</td>
-					<c:forEach items="${requestScope.currentseller.listOfHouses}" var="currenthouse">
+					<c:forEach items="${currentseller.listOfHouses}" var="currenthouse">
 						<tr><td></td>
 						<tr>
 							<td colspan="4">${currenthouse.address}, ${currenthouse.zipcode}, ${currenthouse.sellingPrice}, ${currenthouse.marketDate}</td>
@@ -29,6 +29,6 @@
 		<input type="submit" value="add" name="doThisToItem">
 	</form>
 	<a href="addSellerServlet">Create new Seller</a><br />
-	<a href="index.html">Insert a new Recipe</a>
+	<a href="index.html">Insert a new House</a>
 </body>
 </html>
