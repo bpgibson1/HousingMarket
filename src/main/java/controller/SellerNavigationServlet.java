@@ -12,7 +12,7 @@ import model.Seller;
 /**
  * Servlet implementation class SellerNavigationServlet
  */
-@WebServlet("/SellerNavigationServlet")
+@WebServlet("/sellerNavigationServlet")
 public class SellerNavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

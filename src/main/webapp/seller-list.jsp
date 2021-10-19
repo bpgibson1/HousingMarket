@@ -8,7 +8,7 @@
 <title>All Sellers</title>
 </head>
 <body>
-	<form method="post" action="/SellerNavigationServlet">
+	<form method="post" action="sellerNavigationServlet">
 		<table>
 			<c:forEach items="${requestScope.allSellers}" var="currentseller">
 				<tr>
@@ -16,18 +16,18 @@
 						value="${currentseller.sellerId}"></td>
 					<td>${currentseller.firstName}</td>
 					<td>${currentseller.lastName}</td>
-					<c:forEach items="${requestScope.currentseller.listOfHouses}"
-						var="currenthouse">
+					<c:forEach items="${requestScope.currentseller.listOfHouses}" var="currenthouse">
+						<tr><td></td>
 						<tr>
-							<td>${currenthouse.houseId}</td>
+							<td colspan="4">${currenthouse.address}, ${currenthouse.zipcode}, ${currenthouse.sellingPrice}, ${currenthouse.marketDate}</td>
 						</tr>
 					</c:forEach>
 				</tr>
 			</c:forEach>
 		</table>
-		<input type="submit" value="edit" name="doThisToItem"> <input
-			type="submit" value="delete" name="doThisToItem"> <input
-			type="submit" value="add" name="doThisToItem">
+		<input type="submit" value="edit" name="doThisToItem">
+		<input type="submit" value="delete" name="doThisToItem"> 
+		<input type="submit" value="add" name="doThisToItem">
 	</form>
 </body>
 </html>

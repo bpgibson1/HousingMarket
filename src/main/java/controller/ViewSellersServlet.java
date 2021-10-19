@@ -14,7 +14,7 @@ import model.Seller;
 /**
  * Servlet implementation class ViewSellersServlet
  */
-@WebServlet("/ViewSellersServlet")
+@WebServlet("/viewSellersServlet")
 public class ViewSellersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,24 +24,33 @@ public class ViewSellersServlet extends HttpServlet {
     public ViewSellersServlet() {
         super();
     }
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SellerHelper sh = new SellerHelper();
-		
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	SellerHelper sh = new SellerHelper();
 		List<Seller> sellers = sh.showAllSellers();
+		
 		request.setAttribute("allSellers", sellers);
 		
 		String path;
 		
 		if (sellers.isEmpty()) {
+			request.setAttribute("allSellers", " ");
 			path = "/index.html";
 		} else {
 			path = "/seller-list.jsp";
 		}
 		
+		for(Seller a : sellers) {
+			System.out.println(a.toString());
+		}
+		
 		 getServletContext().getRequestDispatcher(path).forward(request, response);
+    	
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 }

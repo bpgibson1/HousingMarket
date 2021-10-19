@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="AddSellerServlet" method="post">
+	<form action="addSellerServlet" method="post">
 		<label for="sellerFirstName">Enter seller first name:</label> <input
 			type="text" id="sellerFirstName" name="sellerFirstName"
 			placeholder="Jane" size="10"> <label for="sellerLastName">Enter

@@ -37,7 +37,7 @@ public class EditHouseServlet extends HttpServlet {
 		int zipcode = Integer.parseInt(request.getParameter("zipcode"));
 		int sellingPrice = Integer.parseInt(request.getParameter("sellingPrice"));
 		LocalDate marketDate = LocalDate.parse(request.getParameter("marketDate"));
-		Integer tempId = Integer.parseInt(request.getParameter("houseId"));
+		Integer tempId = Integer.parseInt(request.getParameter("id"));
 		
 		House houseToUpdate = doa.searchForHouseById(tempId);
 		houseToUpdate.setAddress(address);
@@ -47,7 +47,7 @@ public class EditHouseServlet extends HttpServlet {
 		
 		doa.updateHouse(houseToUpdate);
 		
-		getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllHousesServlet").forward(request, response);
 	}
 
 }
