@@ -26,6 +26,14 @@ public class ViewSellersServlet extends HttpServlet {
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	SellerHelper sh = new SellerHelper();
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SellerHelper sh = new SellerHelper();
+		
 		List<Seller> sellers = sh.showAllSellers();
 		
 		request.setAttribute("allSellers", sellers);
@@ -46,11 +54,4 @@ public class ViewSellersServlet extends HttpServlet {
 		 getServletContext().getRequestDispatcher(path).forward(request, response);
     	
     }
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
 }
