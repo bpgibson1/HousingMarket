@@ -33,11 +33,12 @@ public class HouseNavigationServlet extends HttpServlet {
 		String act = request.getParameter("doThisToItem");
 		String path = "/viewAllHousesServlet";
 		
+		System.out.println(act);
 		
 		if(act.equals("delete")) {
 			
 			try {
-				Integer tempId = Integer.parseInt(request.getParameter("houseId"));
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				House houseToDelete = doa.searchForHouseById(tempId);
 				doa.removeHouse(houseToDelete);
 			} catch (NumberFormatException e) {
@@ -47,7 +48,7 @@ public class HouseNavigationServlet extends HttpServlet {
 		} else if(act.equals("edit")) {
 			
 			try {
-				Integer tempId = Integer.parseInt(request.getParameter("houseId"));
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				House houseToEdit = doa.searchForHouseById(tempId);
 				request.setAttribute("houseToEdit", houseToEdit);
 				path = "/edit-house.jsp";

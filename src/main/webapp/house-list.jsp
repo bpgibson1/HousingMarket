@@ -13,6 +13,7 @@
 	<c:forEach items="${requestScope.allHouses}" var="currentitem">
 		<tr>
 			<td><input type="radio" name="id" value="${currentitem.houseId}"></td>
+			<td>${currentitem.houseId}</td>
 			<td>Address: ${currentitem.address}</td>
 			<td> Zipcode: ${currentitem.zipcode}</td>
 			<td> Selling Price: $ ${currentitem.sellingPrice}</td>
