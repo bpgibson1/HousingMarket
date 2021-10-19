@@ -33,6 +33,23 @@ public class Seller {
 	
 	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<House> listOfHouses;
+	
+	
+
+	/**
+	 * 
+	 */
+	public Seller() {
+	}
+
+	/**
+	 * @param firstName
+	 * @param lastName
+	 */
+	public Seller(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	/**
 	 * @return the sellerId

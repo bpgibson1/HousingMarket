@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import model.Seller;
 
 /**
- * Servlet implementation class ViewSellersServlet
+ * Servlet implementation class AddSellerServlet
  */
-@WebServlet("/ViewSellersServlet")
-public class ViewSellersServlet extends HttpServlet {
+@WebServlet("/AddSellerServlet")
+public class AddSellerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewSellersServlet() {
+    public AddSellerServlet() {
         super();
     }
 
@@ -29,19 +28,14 @@ public class ViewSellersServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String fName = request.getParameter("sellerFirstName");
+		String lName = request.getParameter("sellerLastName");
+		
+		Seller seller = new Seller(fName, lName);
 		SellerHelper sh = new SellerHelper();
+		sh.insertSeller(seller);
 		
-		List<Seller> sellers = sh.showAllSellers();
-		request.setAttribute("allSellers", sellers);
-		
-		String path;
-		
-		if (sellers.isEmpty()) {
-			path = "/index.html";
-		} else {
-			path = "/seller-list.jsp";
-		}
-		
-		 getServletContext().getRequestDispatcher(path).forward(request, response);
+		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 	}
+
 }
