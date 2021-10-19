@@ -8,15 +8,15 @@
 <title>All Houses</title>
 </head>
 <body>
-	<form method="post" action="/houseNavigationServlet">
+	<form method="post" action="houseNavigationServlet">
 	<table>
-	<c:forEach items="${requestScope.allHouses}" var="currenthouse">
+	<c:forEach items="${requestScope.allHouses}" var="currentitem">
 		<tr>
 			<td><input type="radio" name="id" value="${currentitem.houseId}"></td>
-			<td>${currentitem.address}</td>
-			<td>${currentitem.zipcode}</td>
-			<td>${currentitem.sellingPrice}</td>
-			<td>${currentitem.marketDate}</td>
+			<td>Address: ${currentitem.address}</td>
+			<td> Zipcode: ${currentitem.zipcode}</td>
+			<td> Selling Price: $ ${currentitem.sellingPrice}</td>
+			<td> Market Date:${currentitem.marketDate}</td>
 		</tr>
 	</c:forEach>
 	</table>
