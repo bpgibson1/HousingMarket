@@ -50,6 +50,20 @@ public class Seller {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
+	
+	
+
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param listOfHouses
+	 */
+	public Seller(String firstName, String lastName, List<House> listOfHouses) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.listOfHouses = listOfHouses;
+	}
 
 	/**
 	 * @return the sellerId

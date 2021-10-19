@@ -6,14 +6,24 @@
 </head>
 <body>
 	<form action="addHouseServlet" method="post">
-	Address: <input type="text" name="address" >
-	Zipcode: <input type="text" name="zipcode">
-	Selling Price: $<input type="text" name="sellingPrice">
-	Market Date: <input type="text" name="marketDate" placeholder="YYYY-MM-DD">
-	<input type="submit" value="Add Item">
-	</form> <br/>
-	<p><a href="viewAllHousesServlet">View the complete list of Houses</a></p><br />
-	<p><a href="viewSellersServlet">View all Sellers</a></p><br />
-	<p><a href="add-seller.jsp">Create a new Seller</a></p>
+		Address: <input type="text" name="address"> Zipcode: <input
+			type="text" name="zipcode"> Selling Price: $<input
+			type="text" name="sellingPrice"> Market Date: <input
+			type="text" name="marketDate" placeholder="YYYY-MM-DD"> <input
+			type="submit" value="Add Item">
+	</form>
+	<br />
+	<form action="viewAllHousesServlet" method="post">
+		<button type="submit">View all Houses</button>
+	</form>
+	
+	<br />
+	<form action="viewSellersServlet" method="post">
+		<button type="submit">View all Sellers</button>
+	</form>
+	<br />
+	<p>
+		<a href="add-seller.jsp">Create a new Seller</a>
+	</p>
 </body>
 </html>
