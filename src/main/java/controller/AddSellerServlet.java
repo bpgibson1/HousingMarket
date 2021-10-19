@@ -23,6 +23,10 @@ public class AddSellerServlet extends HttpServlet {
     public AddSellerServlet() {
         super();
     }
+    
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
